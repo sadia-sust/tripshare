@@ -57,3 +57,4 @@
 		  </script>
 		{!! Html::script('js/bootstrap.min.js') !!}
 		{!! Html::script('js/font-awesome.min.js') !!}
+		@yield('script')
