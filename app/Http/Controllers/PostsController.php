@@ -13,4 +13,8 @@ class PostsController extends Controller
 
     	return view('homePage');
     }
+
+    public function create(){
+    	return view('posts.create');
+    }
 }

@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('test', 'PostsController@index')->name('posts');
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,3 +24,11 @@ Route::post('create', 'HomeController@store')->name('store');
 Route::get('edit/{id}', 'HomeController@edit')->name('edit');
 Route::put('edit/{id}', 'HomeController@update')->name('update');
 Route::get('delete/{id}', 'HomeController@delete')->name('delete');
+
+//post public timeline
+Route::get('timeline', 'PostsController@index')->name('timeline');
+
+//
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('post/create', 'PostsController@create')->name('post.create');
+});
