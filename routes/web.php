@@ -27,6 +27,7 @@ Route::get('delete/{id}', 'HomeController@delete')->name('delete');
 
 //post public timeline
 Route::get('timeline', 'PostsController@index')->name('timeline');
+Route::get('post/details/{id}','PostsController@view')->name('post.details');
 
 //
 Route::group(['middleware' => 'auth'], function () {
