@@ -17,7 +17,7 @@
     <ul id="tiles">
         <!-- These are our grid blocks -->
         @foreach($posts as $post)
-            <li onclick="location.href='single-page.html';">
+            <li><a href="{!! route('post.details',$post->_id) !!}">
                 @if($post->photo_url)
                     {!! Html::image($post->photo_url, 'a picture', array('class' => 'thumb')) !!}
                 @elseif($post->video_url)
@@ -25,9 +25,10 @@
                         {!! \Embed::make($post->video_url)->parseUrl()->setAttribute(['width' => '100%', 'height' => '100%'])->getHtml() !!}
                     @endif
                 @endif
+                </a>
                 <div class="post-info">
                     <div class="post-basic-info">
-                        <h3><a href="#"><label> </label>{!! $post->location['name'] !!} </a></h3>
+                        <h3><a href="#"><label> </label>{!! $post->location !!} </a></h3>
                         
                         @for($i = 0; $i < count($post->tags); $i++)
                             <span><a href="#"> #{!! $post->tags[$i] !!} </a></span>

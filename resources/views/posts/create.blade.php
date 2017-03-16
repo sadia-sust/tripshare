@@ -13,9 +13,11 @@
                 
                 <div class="panel-body">
                     @include('layouts.alert')
+                    
                     {!! Form::open([
-                        'route' => 'store',
-                        'method' => 'post'
+                        'route' => 'post.store',
+                        'method' => 'post',
+                        'files' =>  true
                       ]) 
                     !!}
 
@@ -25,19 +27,22 @@
                           <input type="file" name="image" id="image-upload" />
                         </div>                  
                     </div>
+                    
                     <div class="form-group">
-                        {!! Form::url('video_url', null, ['pattern'="https?://.+",'class'=>'form-control', 'placeholder'=>'Enter youtube video link']) !!}
-                     </div>
-                    <div class="form-group">
-                      {!! Form::text('location', null, ['id'=>'address', 'class'=>'form-control']) !!}
+                        {!! Form::url('video_url', null, ['pattern'=>"https?://.+",'class'=>'form-control', 'placeholder'=>'Enter youtube video link']) !!}
                     </div>
+
                     <div class="form-group">
-                        <input type="text" id="input-tags" class="demo-default" placeholder="Tags">
+                        {!! Form::text('location', null, ['id'=>'address', 'class'=>'form-control','required']) !!}
+                    </div>
+                    
+                    <div class="form-group">
+                        <input name="tags" type="text" id="input-tags" class="demo-default" placeholder="Tags" required>
                      </div>
                      
 
                     <div class="form-group">
-                    {!! Form::textarea('post', null, [
+                    {!! Form::textarea('description', null, [
                         'class' => 'form-control', 
                         'placeholder' => 'Write a post', 
                         'required']
@@ -104,8 +109,8 @@ $(document).ready(function() {
             var autocomplete = new google.maps.places.Autocomplete($("#address")[0], {});
 
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                var place = autocomplete.getPlace();
-                alert(document.getElementById('address').value);
+                //var place = autocomplete.getPlace();
+                //alert(document.getElementById('address').value);
             });
         </script>
 

@@ -32,4 +32,5 @@ Route::get('post/details/{id}','PostsController@view')->name('post.details');
 //
 Route::group(['middleware' => 'auth'], function () {
   Route::get('post/create', 'PostsController@create')->name('post.create');
+  Route::post('post/create', 'PostsController@store')->name('post.store');
 });

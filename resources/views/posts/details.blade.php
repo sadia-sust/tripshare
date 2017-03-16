@@ -19,7 +19,7 @@
 				                    @endif
 				                @endif
 									
-									<h3><a href="#">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</a></h3>
+									<h3><a href="#">{!! $post->location !!}</a></h3>
 
 									@for($i = 0; $i < count($post->tags); $i++)
 			                            <span><a href="#"> #{!! $post->tags[$i] !!} </a></span>
