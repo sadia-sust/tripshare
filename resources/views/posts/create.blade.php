@@ -6,7 +6,14 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Create a new post</div>
-
+                    <form action="" method="post" enctype="multipart/form-data" name="personal_image" id="newHotnessForm">
+    <p><label for="image">Upload Image:</label>
+    <input type="file" id="imageUpload"/></p>
+    <p><button type="submit" class="button">Upload</button></p>
+        <div id="preview">
+            <img width="160px" height="120px" src="profile pic.jpg" id="thumb" />
+        </div>
+    </form>
                 <div class="panel-body">
                     @include('layouts.alert')
                     {!! Form::open([
