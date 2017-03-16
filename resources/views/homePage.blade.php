@@ -18,12 +18,12 @@
         <!-- These are our grid blocks -->
         @foreach($posts as $post)
             <li onclick="location.href='single-page.html';">
-                @if($post->image_url)
-                    <img src="{!! $post->image_url !!}" width="282" height="118">
+                @if($post->photo_url)
+                    {!! Html::image($post->photo_url, 'a picture', array('class' => 'thumb')) !!}
                 @elseif($post->video_url)
-
-                    {!! \Embed::make($post->video_url)->parseUrl()->setAttribute(['width' => '100%', 'height' => '100%'])->getHtml() !!}
-
+                    @if(\Embed::make($post->video_url)->parseUrl())
+                        {!! \Embed::make($post->video_url)->parseUrl()->setAttribute(['width' => '100%', 'height' => '100%'])->getHtml() !!}
+                    @endif
                 @endif
                 <div class="post-info">
                     <div class="post-basic-info">
