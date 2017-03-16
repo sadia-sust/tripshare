@@ -13,6 +13,8 @@
 		<!-- Global CSS for the page and tiles -->
 		{!! Html::style('css/main.css') !!}
 		{!! Html::style('css/style.css') !!}
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
