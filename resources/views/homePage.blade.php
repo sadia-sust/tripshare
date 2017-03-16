@@ -16,7 +16,38 @@
     <br>
     <ul id="tiles">
         <!-- These are our grid blocks -->
-        <li onclick="location.href='single-page.html';">
+        @foreach($posts as $post)
+            <li onclick="location.href='single-page.html';">
+                @if($post->image_url)
+                    <img src="{!! $post->image_url !!}" width="282" height="118">
+                @elseif($post->video_url)
+
+                    {!! \Embed::make($post->video_url)->parseUrl()->setAttribute(['width' => '100%', 'height' => '100%'])->getHtml() !!}
+
+                @endif
+                <div class="post-info">
+                    <div class="post-basic-info">
+                        <h3><a href="#"><label> </label>{!! $post->location['name'] !!} </a></h3>
+                        
+                        @for($i = 0; $i < count($post->tags); $i++)
+                            <span><a href="#"> #{!! $post->tags[$i] !!} </a></span>
+                        @endfor
+
+                        <p>{!! str_limit($post->description, 100) !!}</p>
+                    </div>
+                    <div class="post-info-rate-share">
+                        <div class="rateit">
+                            <span> </span>
+                        </div>
+                        <div class="post-share">
+                            <span> </span>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                </div>
+            </li>
+        @endforeach
+        <!-- <li onclick="location.href='single-page.html';">
             <img src="images/img1.jpg" width="282" height="118">
             <div class="post-info">
                 <div class="post-basic-info">
@@ -34,7 +65,7 @@
                     <div class="clear"> </div>
                 </div>
             </div>
-        </li>
+        </li> -->
         <!-- End of grid blocks -->
     </ul>
 @endsection
