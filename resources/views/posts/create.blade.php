@@ -6,17 +6,12 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Create a new post</div>
-                    
-
-                    <form action="" method="post" enctype="multipart/form-data" name="personal_image" id="newHotnessForm">
-                    <p><label for="image">Upload Image:</label>
-                    <input type="file" id="imageUpload"/></p>
-                    <p><button type="submit" class="button">Upload</button></p>
-                        <div id="preview">
-                            <img width="160px" height="120px" src="profile pic.jpg" id="thumb" />
-                        </div>
-                    </form>
-
+               <div>
+                   <div id="image-preview">
+                      <label for="image-upload" id="image-label">Choose File</label>
+                      <input type="file" name="image" id="image-upload" />
+                    </div>                  
+                 </div>
                 <div class="panel-body">
                     @include('layouts.alert')
                     {!! Form::open([
@@ -54,21 +49,24 @@
 
 @section('style')
 
+{!! Html::style('/css/uploadfile.css') !!}
 @stop
 
 @section('script')
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-        <script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
-        <script type="text/javascript">
+{!! Html::script('http://code.jquery.com/jquery-2.0.3.min.js') !!}
+
+{!! Html::script('/js/jquery.uploadPreview.min.js') !!}
+
+
+       <script type="text/javascript">
 $(document).ready(function() {
   $.uploadPreview({
-    input_field: "#image-upload",   // Default: .image-upload
-    preview_box: "#image-preview",  // Default: .image-preview
-    label_field: "#image-label",    // Default: .image-label
-    label_default: "Choose File",   // Default: Choose File
-    label_selected: "Change File",  // Default: Change File
-    no_label: false                 // Default: false
+    input_field: "#image-upload",
+    preview_box: "#image-preview",
+    label_field: "#image-label"
   });
 });
 </script>
+
+
 @stop
