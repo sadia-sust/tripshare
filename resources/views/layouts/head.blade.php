@@ -13,6 +13,7 @@
 		<!-- Global CSS for the page and tiles -->
 		{!! Html::style('css/main.css') !!}
 		{!! Html::style('css/style.css') !!}
+		@yield('style')
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
