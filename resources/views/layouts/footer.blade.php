@@ -56,5 +56,5 @@
 		    })(jQuery);
 		  </script>
 		{!! Html::script('js/bootstrap.min.js') !!}
-		{!! Html::script('js/font-awesome.min.js') !!}
+		{!! Html::script('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') !!}
 		@yield('script')
