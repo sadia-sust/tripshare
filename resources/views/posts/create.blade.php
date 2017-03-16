@@ -2,9 +2,11 @@
 
 @section('content')
 <div class="container">
+
      <div class="col-md-8 col-md-offset-2">
                  
                 </div>
+
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Create a new post</div>
@@ -18,15 +20,20 @@
                     !!}
 
                     <div class="form-group">
-                       <div class="" id="image-preview">
+                       <div class="" id="image-preview" >
                           <label for="image-upload" id="image-label">Choose File</label>
                           <input type="file" name="image" id="image-upload" />
                         </div>                  
                     </div>
-
+                    <div class="form-group">
+                        {!! Form::url('video_url', null, ['pattern'="https?://.+",'class'=>'form-control', 'placeholder'=>'Enter youtube video link']) !!}
+                     </div>
                     <div class="form-group">
                       {!! Form::text('location', null, ['id'=>'address', 'class'=>'form-control']) !!}
                     </div>
+                    <div class="form-group">
+                        <input type="text" id="input-tags" class="demo-default" placeholder="Tags">
+                     </div>
                      
 
                     <div class="form-group">
@@ -38,18 +45,8 @@
                     !!}
                     </div>
 
-                      <div class="contact-form">
-                        <div class="contact-to">
-                            <input type="text" class="text" value="Name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name...';}">
-                            <input type="text" class="text" value="Email..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email...';}">
-                            <input type="text" class="text" value="Subject..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject...';}">
-                        </div>
-                        <div class="text2">
-                           <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message..</textarea>
-                        </div>
-                       <span><input type="submit" class="" value="Submit"></span>
-                        <div class="clear"></div>
-                       </div>
+                    {!! Form::submit('Submit', ['class'=>'form-control btn btn-info']) !!}
+
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -64,6 +61,11 @@
 
 {!! Html::style('/css/location_style.css') !!}
 
+{!! Html::style('/css/selectizenormalize.css') !!}
+
+{!! Html::style('/css/selectizestylesheet.css') !!}
+
+
 
 @stop
 
@@ -75,10 +77,12 @@
 {!! Html::script('http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places') !!}
 {!! Html::script('/js/jquery.uploadPreview.min.js') !!}
 {!! Html::script('/js/jquery.geocomplete.min.js') !!}
+{!! Html::script('/js/selectize.js') !!}
+{!! Html::script('/js/index.js') !!}
 
 
 
-       <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
   $.uploadPreview({
     input_field: "#image-upload",
@@ -87,6 +91,13 @@ $(document).ready(function() {
   });
 });
 </script>
+<script type="text/javascript">
+    $('#input-tags').selectize({
+        persist: false,
+        createOnBlur: true,
+        create: true
+    });
+    </script>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script>
         <script>
