@@ -8,12 +8,6 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Create a new post</div>
-               <div>
-                   <div id="image-preview">
-                      <label for="image-upload" id="image-label">Choose File</label>
-                      <input type="file" name="image" id="image-upload" />
-                    </div>                  
-                 </div>
                 
                 <div class="panel-body">
                     @include('layouts.alert')
@@ -22,14 +16,27 @@
                         'method' => 'post'
                       ]) 
                     !!}
-                     <input type="text" id="address" style="width: 500px;"></input>
 
+                    <div class="form-group">
+                       <div class="" id="image-preview">
+                          <label for="image-upload" id="image-label">Choose File</label>
+                          <input type="file" name="image" id="image-upload" />
+                        </div>                  
+                    </div>
+
+                    <div class="form-group">
+                      {!! Form::text('location', null, ['id'=>'address', 'class'=>'form-control']) !!}
+                    </div>
+                     
+
+                    <div class="form-group">
                     {!! Form::textarea('post', null, [
                         'class' => 'form-control', 
                         'placeholder' => 'Write a post', 
                         'required']
                         )
                     !!}
+                    </div>
 
                       <div class="contact-form">
                         <div class="contact-to">

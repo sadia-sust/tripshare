@@ -2,7 +2,7 @@
 			<div class="header">
 				<div class="wrap">
 				<div class="logo">
-					<a href="index.html"><img src="{!! asset('images/logo.png') !!}" title="pinbal" /></a>
+					<a href="/"><img src="{!! asset('images/logo.png') !!}" title="pinbal" /></a>
 				</div>
 				<div class="nav-icon">
 					 <a href="#" class="right_bt" id="activator"><span> </span> </a>
