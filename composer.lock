@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bddc5768b7baed5269e8f22db1b247ea",
+    "hash": "b6984ebabd5b0a3cef8587635f94757d",
     "content-hash": "6fb1401774f5a804de4b876eb0f91272",
     "packages": [
         {
@@ -669,21 +669,24 @@
         },
         {
             "name": "mongodb/mongodb",
-            "version": "1.0.5",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mongodb/mongo-php-library.git",
-                "reference": "2f99156b29bc85582415d6a32bc31010d61a0a71"
+                "reference": "a307dd60e71e1291c60927ea4f3a1905146063f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/2f99156b29bc85582415d6a32bc31010d61a0a71",
-                "reference": "2f99156b29bc85582415d6a32bc31010d61a0a71",
+                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/a307dd60e71e1291c60927ea4f3a1905146063f5",
+                "reference": "a307dd60e71e1291c60927ea4f3a1905146063f5",
                 "shasum": ""
             },
             "require": {
-                "ext-mongodb": "^1.1.0",
+                "ext-mongodb": "^1.2.0",
                 "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
             },
             "type": "library",
             "autoload": {
@@ -720,7 +723,7 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2017-02-16 18:35:09"
+            "time": "2017-02-16 18:40:32"
         },
         {
             "name": "monolog/monolog",

@@ -1,7 +1,6 @@
-<div class="footer">
-	HackBackpack
-</div>
-<!----wookmark-scripts---->
+		<div class="footer">
+			<h5>HackBackpack</h5>
+		</div>
 		{!! Html::script('js/jquery.imagesloaded.js') !!}
 		{!! Html::script('js/jquery.wookmark.js') !!}
 
