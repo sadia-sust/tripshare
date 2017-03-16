@@ -18,4 +18,15 @@ class PostsController extends Controller
     public function create(){
     	return view('posts.create');
     }
+
+    public function view($id){
+
+    	$post = Post::findOrFail($id);
+
+
+
+    	return view('posts.details')->with('post',$post);
+    }
+
+
 }
