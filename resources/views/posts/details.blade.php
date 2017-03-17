@@ -25,9 +25,9 @@
 					<a class="btn btn-warning" href="{!! route('post.edit',$post->_id) !!}">Edit</a>
 					<a class="btn btn-danger" data-toggle="confirmation" data-title="Delete Post?" href="{!! route('post.delete', $post->_id) !!}">Delete</a>
 
-					<a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Open Google?"
+	<!-- 				<a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Open Google?"
    href="https://google.com" target="_blank">Confirmation</a>
-   
+    -->
 				</span>
 			</div>
 			@endif
