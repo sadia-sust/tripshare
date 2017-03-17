@@ -53,13 +53,7 @@
 			 	</ul>
 			 </div>
 
-			 <div class="share-artical pull-right">
-			 	<ul>
-			 		<li><a href="#"><img src="{!! asset('images/facebooks.png') !!}" title="facebook">Facebook</a></li>
-			 		<li><a href="#"><img src="{!! asset('images/twiter.png') !!}" title="facebook">Twitter</a></li>
-			 		<li><a href="#"><img src="{!! asset('images/google-plus.png') !!}" title="facebook">Google+</a></li>
-			 	</ul>
-			 </div>
+			 
 			 <div class="clear"> </div>
 	</div>
 					
