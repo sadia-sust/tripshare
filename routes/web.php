@@ -32,6 +32,7 @@ Route::get('post/details/{id}','PostsController@view')->name('post.details');
 
 // search with tag/location
 Route::get('search', 'SearchController@search')->name('search');
+Route::get('search/{sort}', 'SearchController@sort')->name('sort');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::get('post/create', 'PostsController@create')->name('post.create');
