@@ -18,6 +18,7 @@
         @endif
 
         <hr>
+        	@if(Auth::user())
 			@if($post->user_id == \Auth::user()->_id) 
 			<div class="row pull-right">
 				<span>
@@ -29,6 +30,7 @@
    
 				</span>
 			</div>
+			@endif
 			@endif
 			<h3><a href="#">{!! $post->location !!}</a></h3>
 			<h4 class="pull-right"><a href="{!! route('profile',$post->user_id) !!}"><i class="fa fa-user"></i>{!! $post->username !!}'s timeline</a></h4>
