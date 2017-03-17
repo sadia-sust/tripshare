@@ -40,4 +40,5 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('post/{_id}/comment', 'PostsController@comment')->name('post.comment');
   Route::get('post/upvote/{id}','PostsController@upvote')->name('post.upvote');
   Route::get('post/downvote/{id}','PostsController@downvote')->name('post.downvote');
+  Route::get('profile/{id}','PostsController@profile')->name('profile');
 });

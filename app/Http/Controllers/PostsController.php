@@ -11,6 +11,17 @@ use App\User, App\Post;
 
 class PostsController extends Controller
 {
+
+    public function profile($id){
+        $posts = Post::where('user_id',$id)->get();
+        $sort= "NULL";
+
+        return view('profile')
+                ->with('posts', $posts)
+                ->with('sort', $sort);
+    }
+
+
     public function index(){
     	$posts = Post::paginate(3);
         $sort= "NULL";
