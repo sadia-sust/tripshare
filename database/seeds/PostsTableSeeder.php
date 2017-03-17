@@ -37,9 +37,9 @@ class PostsTableSeeder extends Seeder
                                 'fun'
                             ],
             
-            'upvote'    =>  [],
+            'upvotes'    =>  [],
             
-            'downvote'  =>  []
+            'downvotes'  =>  []
         ]);
 
         Post::create([
@@ -55,8 +55,8 @@ class PostsTableSeeder extends Seeder
         						'hack',
         						'fun'
         					],
-        	'upvote'	=>	[],
-        	'downvote'	=>	[]
+        	'upvotes'	=>	[],
+        	'downvotes'	=>	[]
         ]);
 
         Post::create([
@@ -72,8 +72,8 @@ class PostsTableSeeder extends Seeder
                                 'hack',
                                 'fun'
                             ],
-            'upvote'    =>  [],
-            'downvote'  =>  []
+            'upvotes'    =>  [],
+            'downvotes'  =>  []
         ]);
     }
 }
