@@ -77,11 +77,16 @@ class SearchController extends Controller
 
     	$keyword = request('keyword');
     	$arr = explode('$',$keyword);
-    	
+    	//return $keyword;
     	$sort = $arr[0];
         
-        if($arr[1][0] == '#'){
+        if((count($arr)>1 && $arr[1][0]== '#' ) ||   $arr[0][0]== '#'  ){
+    		
+        	if(count($arr)>1)
     		$keyword = strtolower(substr($arr[1], 1));
+    		else
+			$keyword = strtolower(substr($arr[0], 1));
+    		
 			//return $arr[0].$keyword;
     		//$posts = Post::where('tags', 'all', [$keyword])->get();
 		if(strcmp($arr[0],"recent")==0)
@@ -125,8 +130,11 @@ class SearchController extends Controller
 
     	}else{
 
-
+    		if(count($arr)>1)
     		$keyword = strtolower($arr[1]);
+    	  	else
+    	  	$keyword = strtolower($arr[0]);
+    	  		
     	  // 	return $arr[0].$keyword;
     		$posts = Post::where('location','LIKE','%'.$keyword.'%')->paginate(10);
     			if(strcmp($arr[0],"recent")==0)
