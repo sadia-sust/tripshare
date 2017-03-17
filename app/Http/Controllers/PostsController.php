@@ -13,12 +13,14 @@ class PostsController extends Controller
 {
 
     public function profile($id){
-        $posts = Post::where('user_id',$id)->get();
+        $posts = Post::where('user_id',$id)->paginate(10);
+        $user = User::findOrFail($id);
         $sort= "NULL";
 
         return view('profile')
                 ->with('posts', $posts)
-                ->with('sort', $sort);
+                ->with('sort', $sort)
+                ->with('username', $user->name);
     }
 
 

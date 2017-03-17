@@ -8,14 +8,7 @@
             ]) 
         !!}
         <div class="col-md-2 col-md-offset-1">
-        <div class="dropdown">
-          <button class="dropbtn">View By</button>
-          <div class="dropdown-content">
-            <a href="{!! route('sort','recent') !!}">Recent Updates</a>
-            <a href="{!! route('sort','trending') !!}">Trending</a>
-            <a href="{!! route('sort','upvoted') !!}">Most upvoted</a>
-          </div>
-        </div>
+            <span>{!! $username !!}'s timeline</span>
         </div>
         <div class="input-group col-md-7">
           <input name="keyword" type="text" class="form-control" required>
