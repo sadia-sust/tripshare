@@ -2,12 +2,18 @@
 
 @section('content')
     <div class="row">
+        {!! Form::open([
+            'route' => 'search',
+            'method' => 'get'
+            ]) 
+        !!}
         <div class="input-group col-md-7 col-md-offset-3">
-          <input type="text" class="form-control" aria-label="...">
+          <input name="keyword" type="text" class="form-control" required>
           <div class="input-group-btn">
             <!-- Buttons -->
             <button class="btn btn-info" type="submit">Search</a>
           </div>
+        {!! Form::close() !!}
           <div class="pull-right">
             <a class="btn btn-success" href="{!! route('post.create') !!}"><i class="fa fa-plus"></i></a>
         </div>
@@ -28,10 +34,10 @@
                 </a>
                 <div class="post-info">
                     <div class="post-basic-info">
-                        <h3><a href="#"><label> </label>{!! $post->location !!} </a></h3>
+                        <h3><a href="{!! url('search?keyword='.$post->location) !!}"><label> </label>{!! $post->location !!} </a></h3>
                         
                         @for($i = 0; $i < count($post->tags); $i++)
-                            <span><a href="#"> #{!! $post->tags[$i] !!} </a></span>
+                            <span><a href="{!! url('search?keyword=%23'.$post->tags[$i]) !!}"> #{!! $post->tags[$i] !!} </a></span>
                         @endfor
                         <a href="{!! route('post.details',$post->_id) !!}">
                         <p>{!! str_limit($post->description, 100) !!}</p>

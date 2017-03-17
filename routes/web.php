@@ -31,8 +31,7 @@ Route::get('post/details/{id}','PostsController@view')->name('post.details');
 Route::get('post/upvote/{id}','PostsController@upvote')->name('post.upvote');
 
 // search with tag/location
-Route::get('searchloc/{tag}', 'SearchController@searchLocation')->name('searchloc');
-Route::get('searchtag/{tag}', 'SearchController@searchTag')->name('searchtag');
+Route::get('search', 'SearchController@search')->name('search');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::get('post/create', 'PostsController@create')->name('post.create');
