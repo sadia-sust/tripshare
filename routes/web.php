@@ -30,8 +30,7 @@ Route::get('timeline', 'PostsController@index')->name('timeline');
 Route::get('post/details/{id}','PostsController@view')->name('post.details');
 
 // search with tag/location
-Route::get('searchloc/{tag}', 'SearchController@searchLocation')->name('searchloc');
-Route::get('searchtag/{tag}', 'SearchController@searchTag')->name('searchtag');
+Route::get('search', 'SearchController@search')->name('search');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::get('post/create', 'PostsController@create')->name('post.create');

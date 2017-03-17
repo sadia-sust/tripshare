@@ -11,17 +11,24 @@ use App\User, App\Post;
 
 class SearchController extends Controller
 {
- 	 public function searchLocation($tag){
-    	$posts = Post::get()->where('location',$tag) ;
+	
+	public function search(){
+    	$keyword = request('keyword');
+    	
+    	if($keyword[0] == '#'){
+    		$keyword = strtolower(substr($keyword, 1));
 
-    	return view('homePage')
-    			->with('posts', $posts);
-    }
-     public function searchtag($tag){
-    	//$posts = Post::whereRaw(  'tag.text',"sushi"  )->get() ;
+    		$posts = Post::where('tags', 'all', [$keyword])->get();
 
-    	return view('homePage')
-    			->with('posts', $posts);
+    		return view('homePage')
+    				->with('posts', $posts);
+
+    	}else{
+    		$posts = Post::where('location','LIKE','%'.$keyword.'%')->get();
+
+    		return view('homePage')
+    				->with('posts', $posts);		
+    	}
     }
 
 }
