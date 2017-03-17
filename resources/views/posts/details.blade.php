@@ -10,12 +10,14 @@
 		<div class="artical-content">
 		@if($post->photo_url)
             {!! Html::image($post->photo_url, 'a picture', array('class' => 'thumb')) !!}
+         	<br></br>
          @endif
         @if($post->video_url)
             @if(\Embed::make($post->video_url)->parseUrl())
                 {!! \Embed::make($post->video_url)->parseUrl()->setAttribute(['width' => '100%', 'height' => '500px'])->getHtml() !!}
             @endif
         @endif
+
 
         <hr>
         	@if(Auth::user())
@@ -33,7 +35,6 @@
 			@endif
 			@endif
 			<h3><a href="#">{!! $post->location !!}</a></h3>
-			<h4 class="pull-right"><a href="{!! route('profile',$post->user_id) !!}"><i class="fa fa-user"></i>{!! $post->username !!}'s timeline</a></h4>
 
 			@for($i = 0; $i < count($post->tags); $i++)
                 <span><a href="#"> #{!! $post->tags[$i] !!} </a></span>
@@ -51,15 +52,14 @@
 			 		<li><i class="fa fa-comments-o"></i> {!! count($post->comments) !!}</li>
 			 	</ul>
 			 </div>
-			
-			<!--  <div class="share-artical pull-right">
+
+			 <div class="share-artical pull-right">
 			 	<ul>
 			 		<li><a href="#"><img src="{!! asset('images/facebooks.png') !!}" title="facebook">Facebook</a></li>
 			 		<li><a href="#"><img src="{!! asset('images/twiter.png') !!}" title="facebook">Twitter</a></li>
 			 		<li><a href="#"><img src="{!! asset('images/google-plus.png') !!}" title="facebook">Google+</a></li>
 			 	</ul>
-			 </div> -->
-
+			 </div>
 			 <div class="clear"> </div>
 	</div>
 					
@@ -112,16 +112,3 @@
 </div>
 							
 @endsection
-
-
-@section('script')
-{!! Html::script('js/bootstrap-confirmation.js') !!}
-
-<script type="text/javascript">
-	$('[data-toggle=confirmation]').confirmation({
-	  rootSelector: '[data-toggle=confirmation]',
-	  // other options
-	});
-</script>
-
-@end
