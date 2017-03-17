@@ -28,7 +28,7 @@ Route::get('delete/{id}', 'HomeController@delete')->name('delete');
 //post public timeline
 Route::get('timeline', 'PostsController@index')->name('timeline');
 Route::get('post/details/{id}','PostsController@view')->name('post.details');
-Route::get('post/upvote/{id}','PostsController@upvote')->name('post.upvote');
+
 
 // search with tag/location
 Route::get('search', 'SearchController@search')->name('search');
@@ -37,4 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('post/create', 'PostsController@create')->name('post.create');
   Route::post('post/create', 'PostsController@store')->name('post.store');
   Route::post('post/{_id}/comment', 'PostsController@comment')->name('post.comment');
+  Route::get('post/upvote/{id}','PostsController@upvote')->name('post.upvote');
+  Route::get('post/downvote/{id}','PostsController@downvote')->name('post.downvote');
 });

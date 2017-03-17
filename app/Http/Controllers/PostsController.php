@@ -114,8 +114,134 @@ class PostsController extends Controller
 		}
     }
 
-    public function upvote(){
-        return '1';
+    public function upvote($id){
+
+        $post = Post::findOrFail($id);
+
+        $upvote = Auth::user()->_id;
+
+        $flag = '1';
+
+        for($i = 0; $i < count($post->downvotes); $i++){
+        if($post->downvotes[$i]==$upvote)
+            {
+                $flag = '0';
+                $downvote = $post->downvotes[$i];
+            }
+            
+        }
+
+        if($flag=='1'){
+
+            if($post->push('upvotes', $upvote,true))
+                {
+                    return redirect()->back()
+                            ->with('success', 'upvoted successfully');
+                }
+            else
+                {
+                    $post->pull('upvotes', $upvote);
+                    return redirect()->back()
+                            ->with('success', 'upvoted successfully');
+                }
+            }
+        else
+        {
+            $post->pull('downvotes', $downvote);
+
+            if($post->push('upvotes', $upvote,true))
+                {
+                    return redirect()->back()
+                            ->with('success', 'upvoted successfully');
+                }
+            else
+                {
+                    $post->pull('upvotes', $upvote);
+                    return redirect()->back()
+                            ->with('success', 'upvoted successfully');
+                }
+
+
+        }
+
+
+
+        // if($post->push('upvotes', $upvote,true))
+        // {
+        //     return redirect()->back()
+        //             ->with('success', 'upvoted successfully');
+        // }
+        // else
+        // {
+        //     $post->pull('upvotes', $upvote);
+        //     return redirect()->back()
+        //             ->with('success', 'upvoted successfully');
+        // }
+
+       // if($post->push('upvotes', $upvote,true)){
+       //          return redirect()->back()
+       //              ->with('success', 'upvoted successfully');
+       //      }else{
+       //          return redirect()->back()
+       //              ->withInput()
+       //              ->with('error', 'failed to upvote!');
+       //      }
+
+
+    }
+
+    public function downvote($id){
+
+        $post = Post::findOrFail($id);
+
+        $downvote = Auth::user()->_id;
+        $flag = '1';
+
+        for($i = 0; $i < count($post->upvotes); $i++){
+        if($post->upvotes[$i]==$downvote)
+            {
+                $flag = '0';
+                $upvote = $post->upvotes[$i];
+            }
+            
+        }
+
+        if($flag=='1'){
+
+            if($post->push('downvotes', $downvote,true))
+                {
+                    return redirect()->back()
+                            ->with('success', 'downvoted successfully');
+                }
+            else
+                {
+                    $post->pull('downvotes', $downvote);
+                    return redirect()->back()
+                            ->with('success', 'downvoted successfully');
+                }
+            }
+        else
+        {
+            $post->pull('upvotes', $upvote);
+
+            if($post->push('downvotes', $downvote,true))
+                {
+                    return redirect()->back()
+                            ->with('success', 'downvoted successfully');
+                }
+            else
+                {
+                    $post->pull('downvotes', $downvote);
+                    return redirect()->back()
+                            ->with('success', 'downvoted successfully');
+                }
+
+
+        }
+        
+
+
+        
     }
 
 
