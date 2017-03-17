@@ -2,11 +2,6 @@
 
 @section('content')
     <div class="row">
-        {!! Form::open([
-            'route' => 'search',
-            'method' => 'get'
-            ]) 
-        !!}
         <div class="col-md-2 col-md-offset-1">
         <div class="dropdown">
           <button class="btn btn-info">View By</button>
@@ -17,6 +12,11 @@
           </div>
         </div>
         </div>
+        {!! Form::open([
+            'route' => 'search',
+            'method' => 'get'
+            ]) 
+        !!}
         <div class="input-group col-md-7">
           <input name="keyword" type="text" class="form-control" required>
           <div class="input-group-btn">
@@ -27,8 +27,7 @@
           <div class="pull-right">
             <a class="btn btn-success" href="{!! route('post.create') !!}"><i class="fa fa-plus"></i></a>
         </div>
-        </div>    
-    </div>
+    </div>    
     <br>
     <div class="row">
         <div class="text-center">
