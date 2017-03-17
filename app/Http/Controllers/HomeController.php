@@ -29,9 +29,10 @@ class HomeController extends Controller
     {
 
         $posts = Post::get();
-
+        $sort= NULL;
         return view('home')
-            ->with('posts', $posts);
+            ->with('posts', $posts)
+            ->with('sort',$sort);
     }
 
     public function create(){
@@ -58,6 +59,7 @@ class HomeController extends Controller
             $post->post = $data['post'];
 
             if($post->save()){
+
                 return redirect()->route('home')
                     ->with('success', 'posted successfully');
             }else{

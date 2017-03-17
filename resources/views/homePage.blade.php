@@ -7,7 +7,17 @@
             'method' => 'get'
             ]) 
         !!}
-        <div class="input-group col-md-7 col-md-offset-3">
+        <div class="col-md-2 col-md-offset-1">
+        <div class="dropdown">
+          <button class="dropbtn">View By</button>
+          <div class="dropdown-content">
+            <a href="{!! route('sort','recent') !!}">Recent Updates</a>
+            <a href="{!! route('sort','trending') !!}">Trending</a>
+            <a href="{!! route('sort','upvoted') !!}">Most upvoted</a>
+          </div>
+        </div>
+        </div>
+        <div class="input-group col-md-7">
           <input name="keyword" type="text" class="form-control" required>
           <div class="input-group-btn">
             <!-- Buttons -->
@@ -34,10 +44,10 @@
                 </a>
                 <div class="post-info">
                     <div class="post-basic-info">
-                        <h3><a href="{!! url('search?keyword='.$post->location) !!}"><label> </label>{!! $post->location !!} </a></h3>
+                        <h3><a href="{!! url('search/?keyword='.$sort. '$' .$post->location) !!}"><label> </label>{!! $post->location !!} </a></h3>
                         
                         @for($i = 0; $i < count($post->tags); $i++)
-                            <span><a href="{!! url('search?keyword=%23'.$post->tags[$i]) !!}"> #{!! $post->tags[$i] !!} </a></span>
+                            <span><a href="{!! url('search?keyword='.$sort. '$%23' .$post->tags[$i]) !!}"> #{!! $post->tags[$i] !!} </a></span>
                         @endfor
                         <a href="{!! route('post.details',$post->_id) !!}">
                         <p>{!! str_limit($post->description, 100) !!}</p>
@@ -77,3 +87,6 @@
         <!-- End of grid blocks -->
     </ul>
 @endsection
+@section('style')
+{!! Html::style('/css/dropdown.css') !!}
+@stop

@@ -13,9 +13,11 @@ class PostsController extends Controller
 {
     public function index(){
     	$posts = Post::all();
+        $sort= "NULL";
 
     	return view('homePage')
-    			->with('posts', $posts);
+    			->with('posts', $posts)
+                ->with('sort', $sort);
     }
 
     public function create(){
