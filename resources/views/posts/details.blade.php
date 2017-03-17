@@ -17,7 +17,23 @@
                 {!! \Embed::make($post->video_url)->parseUrl()->setAttribute(['width' => '100%', 'height' => '500px'])->getHtml() !!}
             @endif
         @endif
-			
+
+
+        <hr>
+        	@if(Auth::user())
+			@if($post->user_id == \Auth::user()->_id) 
+			<div class="row pull-right">
+				<span>
+					<a class="btn btn-warning" href="{!! route('post.edit',$post->_id) !!}">Edit</a>
+					<a class="btn btn-danger" data-toggle="confirmation" data-title="Delete Post?" href="{!! route('post.delete', $post->_id) !!}">Delete</a>
+
+					<a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Open Google?"
+   href="https://google.com" target="_blank">Confirmation</a>
+   
+				</span>
+			</div>
+			@endif
+			@endif
 			<h3><a href="#">{!! $post->location !!}</a></h3>
 
 			@for($i = 0; $i < count($post->tags); $i++)
