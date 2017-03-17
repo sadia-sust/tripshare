@@ -9,7 +9,7 @@
         !!}
         <div class="col-md-2 col-md-offset-1">
         <div class="dropdown">
-          <button class="dropbtn">View By</button>
+          <button class="btn btn-info">View By</button>
           <div class="dropdown-content">
             <a href="{!! route('sort','recent') !!}">Recent Updates</a>
             <a href="{!! route('sort','trending') !!}">Trending</a>
@@ -30,6 +30,12 @@
         </div>    
     </div>
     <br>
+    <div class="row">
+        <div class="text-center">
+            {{ $posts->links() }}
+        </div>    
+    </div>
+    
     <ul id="tiles">
         <!-- These are our grid blocks -->
         @foreach($posts as $post)
@@ -70,26 +76,6 @@
                 </div>
             </li>
         @endforeach
-        <!-- <li onclick="location.href='single-page.html';">
-            <img src="images/img1.jpg" width="282" height="118">
-            <div class="post-info">
-                <div class="post-basic-info">
-                    <h3><a href="#">Animation films </a></h3>
-                    <span><a href="#"><label> </label>Movies</a></span>
-                    <p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
-                </div>
-                <div class="post-info-rate-share">
-                    <div class="rateit">
-                        <span> </span>
-                    </div>
-                    <div class="post-share">
-                        <span> </span>
-                    </div>
-                    <div class="clear"> </div>
-                </div>
-            </div>
-        </li> -->
-        <!-- End of grid blocks -->
     </ul>
 @endsection
 @section('style')

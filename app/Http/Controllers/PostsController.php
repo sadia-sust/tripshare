@@ -12,7 +12,7 @@ use App\User, App\Post;
 class PostsController extends Controller
 {
     public function index(){
-    	$posts = Post::all();
+    	$posts = Post::paginate(3);
         $sort= "NULL";
 
     	return view('homePage')
