@@ -36,6 +36,29 @@ class SearchController extends Controller
     	else if(strcmp($sort,"upvoted")==0)
     	{
 			$posts = Post::orderBy('upvote','count')->get();
+			//return sizeof($posts[0]->upvotes);
+			$temp2 = [];
+
+			for($i =0;$i< count($posts); $i++)
+			{
+
+				$temp2[] =  $posts[$i];
+
+				
+			}
+			for($i=0;$i<count($temp2);$i++)
+			for($j=0;$j<=count($temp2);$j++)
+			{
+				if(count($temp2[$i]->upvotes) <count($temp2[$j]->upvotes)    )
+				{
+					$tm =  $temp2[$i]->upvotes;
+					$temp2[$i]->upvotes = $temp2[$j]->upvotes;
+					$temp2[$j]->upvotes = $tmp;
+
+				}
+
+			}
+			return $temp2;
 
     		return view('homePage')
         				->with('posts', $posts)
@@ -78,7 +101,7 @@ class SearchController extends Controller
     	}
     	else if(strcmp($arr[0],"upvoted")==0)
     	{
-			$posts = Post::where('tags', 'all', [$keyword])->orderBy('upvote','count')->get();
+			$posts = Post::where('tags', 'all', [$keyword])->orderBy(\DB::raw('count(upvotes)', 'DESC'))->get();
 
     		return view('homePage')
         				->with('posts', $posts)
@@ -119,8 +142,8 @@ class SearchController extends Controller
     	}
     	else if(strcmp($arr[0],"upvoted")==0)
     	{
-			$posts = Post::where('location','LIKE','%'.$keyword.'%')->orderBy('upvote','count')->get();
-
+			$posts = Post::get();
+			return $posts;
     		return view('homePage')
         				->with('posts', $posts)
     				->with('sort', $sort);
