@@ -18,7 +18,7 @@
         @endif
 			
 			<h3><a href="#">{!! $post->location !!}</a></h3>
-			<h4 class="pull-right"><a href="{!! route('profile',$post->user_id) !!}"><i class="fa fa-user"></i>{!! $post->username !!}</a></h4>
+			<h4 class="pull-right"><a href="{!! route('profile',$post->user_id) !!}"><i class="fa fa-user"></i>{!! $post->username !!}'s timeline</a></h4>
 
 			@for($i = 0; $i < count($post->tags); $i++)
                 <span><a href="#"> #{!! $post->tags[$i] !!} </a></span>

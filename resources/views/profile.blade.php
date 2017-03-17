@@ -2,25 +2,9 @@
 
 @section('content')
     <div class="row">
-        {!! Form::open([
-            'route' => 'search',
-            'method' => 'get'
-            ]) 
-        !!}
-        <div class="col-md-2 col-md-offset-1">
-            <span>{!! $username !!}'s timeline</span>
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <h4 class="panel">{!! $username !!}'s timeline</h4>
         </div>
-        <div class="input-group col-md-7">
-          <input name="keyword" type="text" class="form-control" required>
-          <div class="input-group-btn">
-            <!-- Buttons -->
-            <button class="btn btn-info" type="submit">Search</a>
-          </div>
-        {!! Form::close() !!}
-          <div class="pull-right">
-            <a class="btn btn-success" href="{!! route('post.create') !!}"><i class="fa fa-plus"></i></a>
-        </div>
-        </div>    
     </div>
     <br>
     <ul id="tiles">
