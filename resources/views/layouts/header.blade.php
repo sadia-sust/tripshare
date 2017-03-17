@@ -4,9 +4,7 @@
 				<div class="logo">
 					<a href="/"><img src="{!! asset('images/logo1.png') !!}" height="60px;" title="pinbal" /></a>
 				</div>
-				<div class="nav-icon">
-					 <a href="#" class="right_bt" id="activator"><span> </span> </a>
-				</div>
+			
 				 <div class="box" id="box">
 					 <div class="box_content">        					                         
 						<div class="box_content_center">
