@@ -16,7 +16,20 @@
                 {!! \Embed::make($post->video_url)->parseUrl()->setAttribute(['width' => '100%', 'height' => '500px'])->getHtml() !!}
             @endif
         @endif
-			
+
+        <hr>
+			@if($post->user_id == \Auth::user()->_id) 
+			<div class="row pull-right">
+				<span>
+					<a class="btn btn-warning" href="{!! route('post.edit',$post->_id) !!}">Edit</a>
+					<a class="btn btn-danger" data-toggle="confirmation" data-title="Delete Post?" href="{!! route('post.delete', $post->_id) !!}">Delete</a>
+
+					<a class="btn btn-large btn-primary" data-toggle="confirmation" data-title="Open Google?"
+   href="https://google.com" target="_blank">Confirmation</a>
+   
+				</span>
+			</div>
+			@endif
 			<h3><a href="#">{!! $post->location !!}</a></h3>
 			<h4 class="pull-right"><a href="{!! route('profile',$post->user_id) !!}"><i class="fa fa-user"></i>{!! $post->username !!}'s timeline</a></h4>
 
@@ -96,3 +109,16 @@
 </div>
 							
 @endsection
+
+
+@section('script')
+{!! Html::script('js/bootstrap-confirmation.js') !!}
+
+<script type="text/javascript">
+	$('[data-toggle=confirmation]').confirmation({
+	  rootSelector: '[data-toggle=confirmation]',
+	  // other options
+	});
+</script>
+
+@end

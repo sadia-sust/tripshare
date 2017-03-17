@@ -42,7 +42,6 @@ class PostsController extends Controller
             'tags'      =>  'required',
             'location'  =>  'required',
             'description'=> 'required',
-            'video_url'  => 'url',
             'image'     =>  'image'
         ];
 
@@ -250,16 +249,83 @@ class PostsController extends Controller
                     return redirect()->back()
                             ->with('success', 'downvoted successfully');
                 }
-
-
         }
-        
 
+    }
 
+    public function edit($id){
+    	$post = Post::findOrFail($id);
+
+    	return view('posts.edit')
+    			->with('post', $post);
+    }
+
+    public function update(Request $request, $id){
+    	
+    	$rules = [
+            'description'=> 'required',
+            'image'     =>  'image'
+        ];
+
+        $data = $request->all();
         
+        $validation = Validator::make($data, $rules);
+        
+        if ($validation->fails()) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validation);
+        } else {
+
+            //return $data;
+            $post = Post::findOrFail($id);
+            $url = null;
+            if( $request->hasFile('image') ) {
+            	$url = $post->photo_url;
+                $file = $request->file('image');
+                // Now you have your file in a variable that you can do things with
+                $name = str_random(30).'jpg';
+                $destination = '/images/';
+                $file->move(public_path().$destination, $name);
+
+                $post->photo_url = $destination.$name;
+            }
+
+            $post->description = $data['description'];
+            $post->video_url = $data['video_url'];
+        
+            if($post->save()){
+            	if($url != null && file_exists(public_path().$url)){
+            		unlink(public_path().$url);
+            	}
+                return redirect()->back()
+                    ->with('success', 'posted successfully');
+            }else{
+                return redirect()->back()
+                    ->withInput()
+                    ->with('error', 'failed to post!');
+            }
+        }
+
     }
 
 
+    public function destroy($id){
+    	$post = Post::findOrFail($id);
+
+    	$url = $post->photo_url;
+
+    	if($post->delete()){
+            	if($url != null && file_exists(public_path().$url)){
+            		unlink(public_path().$url);
+            	}
+                return redirect()->route('timeline')
+                    ->with('success', 'post deleted successfully');
+            }else{
+                return redirect()->route('timeline')
+                    ->with('error', 'failed to delete post!');
+            }
+    }
 
 
 }

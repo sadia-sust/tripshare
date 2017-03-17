@@ -18,12 +18,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
-Route::get('create', 'HomeController@create')->name('create');
-Route::post('create', 'HomeController@store')->name('store');
-Route::get('edit/{id}', 'HomeController@edit')->name('edit');
-Route::put('edit/{id}', 'HomeController@update')->name('update');
-Route::get('delete/{id}', 'HomeController@delete')->name('delete');
+// Route::get('home', 'HomeController@index')->name('home');
+// Route::get('create', 'HomeController@create')->name('create');
+// Route::post('create', 'HomeController@store')->name('store');
+// Route::get('edit/{id}', 'HomeController@edit')->name('edit');
+// Route::put('edit/{id}', 'HomeController@update')->name('update');
+// Route::get('delete/{id}', 'HomeController@delete')->name('delete');
 
 //post public timeline
 Route::get('timeline', 'PostsController@index')->name('timeline');
@@ -40,5 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('post/{_id}/comment', 'PostsController@comment')->name('post.comment');
   Route::get('post/upvote/{id}','PostsController@upvote')->name('post.upvote');
   Route::get('post/downvote/{id}','PostsController@downvote')->name('post.downvote');
-  
+  Route::get('post/edit/{id}', 'PostsController@edit')->name('post.edit');
+  Route::put('post/edit/{id}', 'PostsController@update')->name('post.update');
+  Route::get('post/delete/{id}', 'PostsController@destroy')->name('post.delete');
 });
