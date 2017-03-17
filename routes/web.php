@@ -29,7 +29,11 @@ Route::get('delete/{id}', 'HomeController@delete')->name('delete');
 Route::get('timeline', 'PostsController@index')->name('timeline');
 Route::get('post/details/{id}','PostsController@view')->name('post.details');
 
-//
+// search with tag/location
+Route::get('searchloc/{tag}', 'SearchController@searchLocation')->name('searchloc');
+Route::get('searchtag/{tag}', 'SearchController@searchTag')->name('searchtag');
+
 Route::group(['middleware' => 'auth'], function () {
   Route::get('post/create', 'PostsController@create')->name('post.create');
+  Route::post('post/create', 'PostsController@store')->name('post.store');
 });
