@@ -28,7 +28,8 @@
 		    
 			 <div class="share-artical pull-left">
 			 	<ul>
-			 		<li><i class="fa fa-thumbs-o-up"></i> {!! count($post->upvotes) !!}</li>
+			 		<!-- <li><a href="#"><i class="fa fa-thumbs-o-up"></i> </a>{!! count($post->upvotes) !!}</li> -->
+			 		<li><a href="{!! route('post.upvote',$post->_id) !!}"><i class="fa fa-thumbs-o-up"></i> {!! count($post->upvotes) !!}</a></li>
 			 		<li><i class="fa fa-thumbs-o-down"></i> {!! count($post->downvotes) !!}</li>
 			 		<li><i class="fa fa-comments-o"></i> {!! count($post->comments) !!}</li>
 			 	</ul>

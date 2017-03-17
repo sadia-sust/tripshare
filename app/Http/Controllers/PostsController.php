@@ -114,6 +114,10 @@ class PostsController extends Controller
 		}
     }
 
+    public function upvote(){
+        return '1';
+    }
+
 
 
 
