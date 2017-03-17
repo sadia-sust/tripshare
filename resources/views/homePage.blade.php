@@ -44,11 +44,16 @@
                         </a>
                     </div>
                     <div class="post-info-rate-share">
-                        <div class="rateit">
-                            <span> </span>
-                        </div>
-                        <div class="post-share">
-                            <span> </span>
+                        <div class="row">
+                            <span class="col-md-offset-1">
+                                <i class="fa fa-thumbs-o-up"></i> {!! count($post->upvotes) !!}
+                                <i class="fa fa-thumbs-o-down"></i> {!! count($post->downvotes) !!}
+                            </span>
+                            <span class="col-md-offset-4">
+                                <a href="{!! route('post.details',$post->_id) !!}">
+                                    Read More
+                                </a>
+                            </span>
                         </div>
                         <div class="clear"> </div>
                     </div>
