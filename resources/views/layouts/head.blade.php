@@ -9,9 +9,8 @@
 
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    	{!! Html::style('css/font-awesome.min.css') !!}
     	{!! Html::style('css/bootstrap.min.css') !!}
-
+    	{!! Html::style('css/font-awesome.min.css') !!}
 		{!! Html::style('css/main.css') !!}
 		{!! Html::style('css/style.css') !!}
 		

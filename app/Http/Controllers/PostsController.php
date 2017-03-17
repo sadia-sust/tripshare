@@ -59,7 +59,7 @@ class PostsController extends Controller
             $post->description = $data['description'];
             $post->video_url = $data['video_url'];
             $post->location = $data['location'];
-            $post->tags = explode(',',$data['tags']);
+            $post->tags = array_map('strtolower',explode(',',$data['tags']));
 
             if($post->save()){
                 return redirect()->route('timeline')
@@ -77,6 +77,41 @@ class PostsController extends Controller
     	$post = Post::findOrFail($id);
 
     	return view('posts.details')->with('post',$post);
+    }
+
+    public function comment(Request $request, $id){
+		$rules = [
+            'comment'	=>  'required'
+        ];
+
+        $data = $request->all();
+        
+        $validation = Validator::make($data, $rules);
+        
+        if ($validation->fails()) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validation);
+        } else {
+			$post = Post::findOrFail($id);
+			$comment = [
+				'comment'	=>	$data['comment'],
+				'user'		=>	[
+									'_id' => Auth::user()->_id,
+									'name'=> Auth::user()->name
+								],
+				'created_at' =>	(new \DateTime())
+				];
+
+			if($post->push('comments', $comment)){
+				return redirect()->back()
+                    ->with('success', 'commented successfully');
+            }else{
+                return redirect()->back()
+                    ->withInput()
+                    ->with('error', 'failed to comment!');
+            }
+		}
     }
 
 

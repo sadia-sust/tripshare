@@ -33,8 +33,9 @@
                         @for($i = 0; $i < count($post->tags); $i++)
                             <span><a href="#"> #{!! $post->tags[$i] !!} </a></span>
                         @endfor
-
+                        <a href="{!! route('post.details',$post->_id) !!}">
                         <p>{!! str_limit($post->description, 100) !!}</p>
+                        </a>
                     </div>
                     <div class="post-info-rate-share">
                         <div class="rateit">
