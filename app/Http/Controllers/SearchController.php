@@ -18,7 +18,7 @@ class SearchController extends Controller
 		if(strcmp($sort,"recent")==0)
     	{
     		
-			$posts = Post::orderBy('created_at','desc')->get();
+			$posts = Post::orderBy('created_at','desc')->paginate(10);
 
     		return view('homePage')
     				->with('posts', $posts)
@@ -27,7 +27,7 @@ class SearchController extends Controller
     	}
     	else if(strcmp($sort,"trending")==0)
     	{
-			$posts = Post::get();
+			$posts = Post::paginate(10);
 
     		return view('homePage')
     			    ->with('posts', $posts)
@@ -35,7 +35,7 @@ class SearchController extends Controller
     	}
     	else if(strcmp($sort,"upvoted")==0)
     	{
-			$posts = Post::orderBy('upvote','count')->get();
+			$posts = Post::orderBy('upvote','count')->paginate(10);
 
     		return view('homePage')
         				->with('posts', $posts)
@@ -51,17 +51,16 @@ class SearchController extends Controller
     	$keyword = request('keyword');
     	$arr = explode('$',$keyword);
     	
-    	
     	$sort = $arr[0];
-     if($arr[1][0] == '#'){
-     	return $arr[0]."TAG";
+        
+        if($arr[1][0] == '#'){
     		$keyword = strtolower(substr($arr[1], 1));
 			//return $arr[0].$keyword;
     		//$posts = Post::where('tags', 'all', [$keyword])->get();
 		if(strcmp($arr[0],"recent")==0)
     	{
     		
-			$posts = Post::where('tags', 'all', [$keyword])->orderBy('created_at','desc')->get();
+			$posts = Post::where('tags', 'all', [$keyword])->orderBy('created_at','desc')->paginate(10);
 
     		return view('homePage')
     				->with('posts', $posts)
@@ -70,7 +69,7 @@ class SearchController extends Controller
     	}
     	else if(strcmp($arr[0],"trending")==0)
     	{
-			$posts = Post::get();
+			$posts = Post::paginate(10);
 
     		return view('homePage')
     			    ->with('posts', $posts)
@@ -78,7 +77,7 @@ class SearchController extends Controller
     	}
     	else if(strcmp($arr[0],"upvoted")==0)
     	{
-			$posts = Post::where('tags', 'all', [$keyword])->orderBy('upvote','count')->get();
+			$posts = Post::where('tags', 'all', [$keyword])->orderBy('upvote','count')->paginate(10);
 
     		return view('homePage')
         				->with('posts', $posts)
@@ -87,7 +86,7 @@ class SearchController extends Controller
 
 
 
-    		$posts = Post::where('tags', 'all', [$keyword])->get();
+    		$posts = Post::where('tags', 'all', [$keyword])->paginate(10);
 
     		return view('homePage')
         				->with('posts', $posts)
@@ -98,11 +97,11 @@ class SearchController extends Controller
 
     		$keyword = strtolower($arr[1]);
     	  // 	return $arr[0].$keyword;
-    		$posts = Post::where('location','LIKE','%'.$keyword.'%')->get();
+    		$posts = Post::where('location','LIKE','%'.$keyword.'%')->paginate(10);
     			if(strcmp($arr[0],"recent")==0)
     	{
     		
-			$posts = Post::where('location','LIKE','%'.$keyword.'%')->orderBy('created_at','desc')->get();
+			$posts = Post::where('location','LIKE','%'.$keyword.'%')->orderBy('created_at','desc')->paginate(10);
 
     		return view('homePage')
     				->with('posts', $posts)
@@ -111,7 +110,7 @@ class SearchController extends Controller
     	}
     	else if(strcmp($arr[0],"trending")==0)
     	{
-			$posts = Post::get();
+			$posts = Post::paginate(10);
 
     		return view('homePage')
     			    ->with('posts', $posts)
@@ -119,7 +118,7 @@ class SearchController extends Controller
     	}
     	else if(strcmp($arr[0],"upvoted")==0)
     	{
-			$posts = Post::where('location','LIKE','%'.$keyword.'%')->orderBy('upvote','count')->get();
+			$posts = Post::where('location','LIKE','%'.$keyword.'%')->orderBy('upvote','count')->paginate(10);
 
     		return view('homePage')
         				->with('posts', $posts)
@@ -127,7 +126,7 @@ class SearchController extends Controller
     	}
 
 
-    		$posts = Post::where('location','LIKE','%'.$keyword.'%')->get();
+    		$posts = Post::where('location','LIKE','%'.$keyword.'%')->paginate(10);
 
     		return view('homePage')
         				->with('posts', $posts)
